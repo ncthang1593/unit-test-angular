@@ -7,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParentComponent implements OnInit {
   count = 0;
+  obj = {
+    name: 'thang',
+  };
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.changeName(this.obj);
+  }
+
+  changeName(obj: any): void {
+    const newObj = structuredClone(obj);
+    newObj.name = 'hello';
+
+    return newObj;
+  }
 
   increment() {
     this.count += 1;
